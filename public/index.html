@@ -37,6 +37,9 @@
                 let html = `<h2>${entity}</h2><button onclick="showAdd('${entity}')">+ Добавить</button>`;
                 
                 data.forEach(item => {
+                    // 👇 ПРЕОБРАЗУЕМ _id В СТРОКУ
+                    const id = item._id.toString();
+                    
                     html += `<div style="border:1px solid #ccc; margin:5px 0; padding:10px;">`;
                     html += `<strong>${item.name || 'Без названия'}</strong><br>`;
                     
@@ -46,7 +49,7 @@
                         }
                     }
                     
-                    html += `<button onclick="deleteItem('${entity}','${item._id}')">Удалить</button>`;
+                    html += `<button onclick="deleteItem('${entity}','${id}')">Удалить</button>`;
                     html += `</div>`;
                 });
                 
