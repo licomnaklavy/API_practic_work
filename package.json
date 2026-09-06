@@ -1,12 +1,11 @@
 {
-  "name": "minecraft-json-server",
+  "name": "test-api",
   "version": "1.0.0",
-  "description": "Minecraft JSON Server for Railway",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "json-server": "^0.17.4"
+    "json-server": "^0.17.4",
+    "express": "^4.18.2"
   }
 }
