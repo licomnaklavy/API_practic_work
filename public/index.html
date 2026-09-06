@@ -25,7 +25,7 @@
         async function load(entity) {
             try {
                 const res = await fetch(`${API}/${entity}`);
-                if (!res.ok) throw new Error('Ошибка загрузки');
+                if (!res.ok) throw new Error('Ошибка загрузки: ' + res.status);
                 const data = await res.json();
                 const container = document.getElementById('content');
                 
@@ -36,15 +36,15 @@
 
                 let html = `<h2>${entity}</h2><button onclick="showAdd('${entity}')">+ Добавить</button>`;
                 
-                data.forEach(item => {
-                    // 👇 ПРЕОБРАЗУЕМ _id В СТРОКУ
-                    const id = item._id.toString();
+                data.forEach((item, index) => {
+                    // 👇 ИСПОЛЬЗУЕМ id ИЛИ index КАК ЗАПАСНОЙ ВАРИАНТ
+                    const id = item.id || item._id || index;
                     
                     html += `<div style="border:1px solid #ccc; margin:5px 0; padding:10px;">`;
-                    html += `<strong>${item.name || 'Без названия'}</strong><br>`;
+                    html += `<strong>${item.name || 'Без названия'}</strong> (ID: ${id})<br>`;
                     
                     for (const [key, value] of Object.entries(item)) {
-                        if (key !== '_id' && key !== 'name') {
+                        if (key !== 'id' && key !== '_id' && key !== 'name') {
                             html += `${key}: ${Array.isArray(value) ? value.join(', ') : value}<br>`;
                         }
                     }
@@ -55,7 +55,7 @@
                 
                 container.innerHTML = html;
             } catch (err) {
-                document.getElementById('content').innerHTML = `<p style="color:red;">Ошибка загрузки: ${err.message}</p>`;
+                document.getElementById('content').innerHTML = `<p style="color:red;">Ошибка: ${err.message}</p>`;
             }
         }
 
@@ -70,19 +70,20 @@
             })
             .then(res => {
                 if (!res.ok) throw new Error('Ошибка добавления');
-                load(entity);
+                return res.json();
             })
+            .then(() => load(entity))
             .catch(err => alert('Ошибка: ' + err.message));
         }
 
         function deleteItem(entity, id) {
-            if (!confirm('Удалить?')) return;
+            if (!confirm(`Удалить элемент с ID: ${id}?`)) return;
             
             fetch(`${API}/${entity}/${id}`, {
                 method: 'DELETE'
             })
             .then(res => {
-                if (!res.ok) throw new Error('Ошибка удаления');
+                if (!res.ok) throw new Error('Ошибка удаления: ' + res.status);
                 load(entity);
             })
             .catch(err => alert('Ошибка: ' + err.message));
