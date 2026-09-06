@@ -1,0 +1,12 @@
+{
+  "name": "minecraft-json-server",
+  "version": "1.0.0",
+  "description": "Minecraft JSON Server for Railway",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

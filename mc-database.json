@@ -1,0 +1,153 @@
+{
+  "items": [
+    {
+      "id": "0",
+      "name": "Алмазный меч",
+      "type": "оружие",
+      "durability": 1561,
+      "damage": 7,
+      "rarity": "редкий",
+      "stackable": false
+    },
+    {
+      "id": "1",
+      "name": "Золотое яблоко",
+      "type": "еда",
+      "effects": ["Регенерация II", "Поглощение"],
+      "duration_seconds": 30,
+      "rarity": "редкий",
+      "stackable": true,
+      "max_stack": 64
+    },
+    {
+      "id": "2",
+      "name": "Огненный шар",
+      "type": "снаряд",
+      "damage": 6,
+      "explosion_power": 1.5,
+      "rarity": "необычный",
+      "stackable": true,
+      "max_stack": 16
+    },
+    {
+      "id": "3",
+      "name": "Незеритовый слиток",
+      "type": "материал",
+      "rarity": "эпический",
+      "stackable": true,
+      "max_stack": 64
+    },
+    {
+      "id": "4",
+      "name": "Ведро с лавой",
+      "type": "инструмент",
+      "uses": 1,
+      "rarity": "обычный",
+      "stackable": false
+    }
+  ],
+  "mobs": [
+    {
+      "id": "0",
+      "name": "Крипер",
+      "type": "враждебный",
+      "health": 20,
+      "damage": 49,
+      "speed": 1.5,
+      "drops": ["порох"],
+      "behaviour": "взрывается при приближении игрока"
+    },
+    {
+      "id": "1",
+      "name": "Деревенский житель",
+      "type": "нейтральный",
+      "health": 20,
+      "profession": "библиотекарь",
+      "trades": ["книги", "бумага"],
+      "drops": ["изумруд"],
+      "behaviour": "торгуется с игроком"
+    },
+    {
+      "id": "2",
+      "name": "Эндермен",
+      "type": "нейтральный",
+      "health": 40,
+      "damage": 7,
+      "speed": 3.0,
+      "drops": ["эндер-жемчуг"],
+      "behaviour": "телепортируется, агрессивен при взгляде в глаза"
+    },
+    {
+      "id": "3",
+      "name": "Скелет",
+      "type": "враждебный",
+      "health": 20,
+      "damage": 4,
+      "speed": 1.2,
+      "drops": ["кость", "стрела"],
+      "behaviour": "стреляет из лука"
+    },
+    {
+      "id": "4",
+      "name": "Железный голем",
+      "type": "дружелюбный",
+      "health": 100,
+      "damage": 21,
+      "speed": 0.7,
+      "drops": ["железный слиток", "мак"],
+      "behaviour": "защищает деревню"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "0",
+      "name": "Алмазная руда",
+      "type": "руда",
+      "hardness": 3.0,
+      "tool": "кирка (железная или выше)",
+      "drops": ["алмаз"],
+      "light_level": 0,
+      "blast_resistance": 15
+    },
+    {
+      "id": "1",
+      "name": "Сундук",
+      "type": "контейнер",
+      "hardness": 2.5,
+      "tool": "топор",
+      "capacity": 27,
+      "light_level": 0,
+      "blast_resistance": 12.5
+    },
+    {
+      "id": "2",
+      "name": "Печь",
+      "type": "функциональный",
+      "hardness": 3.5,
+      "tool": "кирка",
+      "fuel_efficiency": 1.0,
+      "light_level": 13,
+      "blast_resistance": 17.5
+    },
+    {
+      "id": "3",
+      "name": "Каменный кирпич",
+      "type": "строительный",
+      "hardness": 1.5,
+      "tool": "кирка",
+      "drops": ["каменный кирпич"],
+      "light_level": 0,
+      "blast_resistance": 30
+    },
+    {
+      "id": "4",
+      "name": "Портал в Эндер",
+      "type": "структурный",
+      "hardness": -1,
+      "tool": "не добывается",
+      "light_level": 12,
+      "blast_resistance": 3600000,
+      "requires": "12 очей эндера"
+    }
+  ]
+}
